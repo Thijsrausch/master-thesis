@@ -1,0 +1,65 @@
+{
+	"experiment": {
+		"name": "pos-artifacts",
+		"repository": "https://github.com/gallenmu/pos-artifacts",
+		"author": "gallenmu",
+		"run": {
+			"1": {
+				"start": "2020-10-07 22:22:39",
+				"stop": "2020-10-07 23:00:00",
+				"researcher": "gallenmu",
+				"test_generator": {
+					"config": {
+						"protocol": "moongen",
+						"ingress": 0,
+						"egress": 1,
+						"warmup": 0
+					},
+					"setup": {
+						"script": "https://github.com/gallenmu/pos-artifacts/blob/gh-pages/experiment/loadgen/setup.sh"
+					}
+				},
+				"dut": {
+					"config": {
+						"experiment_script": "https://github.com/gallenmu/pos-artifacts/blob/gh-pages/experiment/experiment.sh",
+						"global_variables": {
+							"moongen_repo": "https://github.com/gallenmu/MoonGen",
+						    "moongen_repo_commit": "21641c9c3432fa8a5f93b135cf38b5247750d0a0",
+						    "moongen_dir": "/root/moongen",
+						    "loadgen": {
+						        "ingress_dev": 1,
+						        "egress_dev": 0,
+						        "ingress_if": "ens4",
+						        "egress_if": "ens5",
+						        "ingress_mac": "52:54:00:78:0a:23",
+						        "egress_mac": "52:54:00:78:0a:20",
+						        "ingress_ip": "10.0.0.20",
+						        "egress_ip": "10.0.1.23",
+						        "enable_ip_sw_chksum_calc": true,
+						        "enable_offload": false
+						    },
+						    "dut": {
+						        "ingress_if": "ens4",
+						        "egress_if": "ens5",
+						        "ingress_mac": "52:54:00:80:0a:22",
+						        "egress_mac": "52:54:00:80:0a:21",
+						        "ingress_ip": "10.0.1.22",
+						        "egress_ip": "10.0.0.21"
+						    }
+						},
+						"loop_variables": {
+							"pkt_rate": [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000, 110000, 120000, 130000, 140000, 150000, 160000, 170000, 180000, 190000, 200000, 210000, 220000, 230000, 240000, 250000, 260000, 270000, 280000, 290000, 300000],
+    						"pkt_sz": [64, 1500]
+						}
+					},
+					"setup": {
+						"script": "https://github.com/gallenmu/pos-artifacts/blob/gh-pages/experiment/dut/setup.sh"
+					}
+				},
+				"measurement": {
+					"script": "https://github.com/gallenmu/pos-artifacts/blob/gh-pages/experiment/dut/measurement.sh"
+				}
+			}
+		}
+	}
+}

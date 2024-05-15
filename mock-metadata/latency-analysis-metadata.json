@@ -1,0 +1,84 @@
+{
+    "experiment": {
+        "name": "latency-analysis",
+        "repository": "https://github.com/latencymeasurements/latency-project",
+        "author": "latencyguru",
+        "run": {
+            "1": {
+                "start": "2024-01-22 08:00:00",
+                "stop": "2024-01-22 11:00:00",
+                "researcher": "latencyguru",
+                "test_generator": {
+                    "config": {
+                        "protocol": "quic",
+                        "ingress": 3,
+                        "egress": 3,
+                        "warmup": 5
+                    },
+                    "setup": {
+                        "script": "https://github.com/latencymeasurements/latency-project/blob/main/setup/test_gen_setup.sh"
+                    }
+                },
+                "dut": {
+                    "config": {
+                        "experiment_script": "https://github.com/latencymeasurements/latency-project/blob/main/scripts/run_latency_test.sh"
+                    },
+                    "measurement": {
+                        "script": "https://github.com/latencymeasurements/latency-project/blob/main/scripts/measure_latency.sh",
+                        "metrics": ["rtt", "jitter"]
+                    }
+                }
+            },
+            "2": {
+                "start": "2024-01-23 09:30:00",
+                "stop": "2024-01-23 12:30:00",
+                "researcher": "latencyguru",
+                "test_generator": {
+                    "config": {
+                        "protocol": "tcp",
+                        "ingress": 2,
+                        "egress": 2,
+                        "warmup": 10
+                    },
+                    "setup": {
+                        "script": "https://github.com/latencymeasurements/latency-project/blob/main/setup/test_gen_setup.sh"
+                    }
+                },
+                "dut": {
+                    "config": {
+                        "experiment_script": "https://github.com/latencymeasurements/latency-project/blob/main/scripts/run_latency_test.sh"
+                    },
+                    "measurement": {
+                        "script": "https://github.com/latencymeasurements/latency-project/blob/main/scripts/measure_latency.sh",
+                        "metrics": ["rtt", "jitter", "connection_reset"]
+                    }
+                }
+            },
+            "3": {
+                "start": "2024-01-24 14:00:00",
+                "stop": "2024-01-24 17:00:00",
+                "researcher": "latencyguru",
+                "test_generator": {
+                    "config": {
+                        "protocol": "udp",
+                        "ingress": 4,
+                        "egress": 4,
+                        "warmup": 15
+                    },
+                    "setup": {
+                        "script": "https://github.com/latencymeasurements/latency-project/blob/main/setup/test_gen_setup.sh"
+                    }
+                },
+                "dut": {
+                    "config": {
+                        "experiment_script": "https://github.com/latencymeasurements/latency-project/blob/main/scripts/run_latency_test.sh"
+                    },
+                    "measurement": {
+                        "script": "https://github.com/latencymeasurements/latency-project/blob/main/scripts/measure_latency.sh",
+                        "metrics": ["rtt", "packet_loss"]
+                    }
+                }
+            }
+        }
+    }
+}

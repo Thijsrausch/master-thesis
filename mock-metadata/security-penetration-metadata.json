@@ -1,0 +1,31 @@
+{
+    "experiment": {
+        "name": "security-penetration-test",
+        "repository": "https://github.com/sec-tests/network-pen-test",
+        "author": "secmaster",
+        "run": {
+            "1": {
+                "start": "2022-07-20 14:00:00",
+                "stop": "2022-07-20 18:00:00",
+                "researcher": "secmaster",
+                "test_environment": {
+                    "config": {
+                        "protocol": "custom_security_protocol",
+                        "attack_vector": "DDoS"
+                    },
+                    "setup": {
+                        "script": "https://github.com/sec-tests/network-pen-test/blob/main/env_setup.sh"
+                    }
+                },
+                "targets": {
+                    "config": {
+                        "systems": ["web_server", "db_server"]
+                    },
+                    "security": {
+                        "measures": ["firewall", "IPS", "anomaly_detection"]
+                    }
+                }
+            }
+        }
+    }
+}

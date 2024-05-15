@@ -1,0 +1,37 @@
+{
+    "experiment": {
+        "name": "throughput-optimization",
+        "repository": "https://github.com/netresearch/throughput-opt",
+        "author": "dr_network",
+        "run": {
+            "1": {
+                "start": "2021-05-15 09:00:00",
+                "stop": "2021-05-15 10:30:00",
+                "researcher": "dr_network",
+                "test_generator": {
+                    "config": {
+                        "protocol": "dpdk",
+                        "ingress": 1,
+                        "egress": 2,
+                        "warmup": 10
+                    },
+                    "setup": {
+                        "script": "https://github.com/netresearch/throughput-opt/blob/master/setup/test_setup.sh"
+                    }
+                },
+                "dut": {
+                    "config": {
+                        "experiment_script": "https://github.com/netresearch/throughput-opt/blob/master/scripts/run_test.sh"
+                    },
+                    "setup": {
+                        "script": "https://github.com/netresearch/throughput-opt/blob/master/setup/dut_setup.sh"
+                    }
+                },
+                "measurement": {
+                    "script": "https://github.com/netresearch/throughput-opt/blob/master/scripts/measure_performance.sh",
+                    "metrics": ["throughput", "latency", "packet_loss"]
+                }
+            }
+        }
+    }
+}
